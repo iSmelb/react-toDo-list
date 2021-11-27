@@ -1,21 +1,20 @@
 import React, { useState } from "react";
+import Counter from "./components/Counter";
+import PostItem from "./components/PostItem";
+import './styles/app.css'
 
 function App() {
-  const [likes, setLikes] = useState(0)
-
-  function increment() {
-    setLikes(likes + 1)
-  }
-
-  function decriment() {
-    setLikes(likes - 1)
-  }
+  const [posts, setProps] = useState([
+    { id: 1, title: 'JavaScript', body: 'description' },
+    { id: 2, title: 'JavaScript', body: 'description' },
+    { id: 3, title: 'JavaScript', body: 'description' },
+  ])
 
   return (
     <div className="App">
-      <h1>{likes}</h1>
-      <button onClick={increment}>increment</button>
-      <button onClick={decriment}>decrement</button>
+      {posts.map((post )=>
+        <PostItem post={post} key={post.id} />
+      )}
     </div>
   );
 }
